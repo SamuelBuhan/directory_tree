@@ -25,6 +25,9 @@ def create_file(path, filename, text):
         file.close()
     return True
 
+def copy_file(src, dest):
+    shutil.copy(src, dest)
+
 def main():
     pwd = os.getcwd()
     file_list(pwd)
@@ -35,7 +38,10 @@ def main():
     text = "hello, this is the first line for my text"
     create_file(pwd, "test.txt", text)
     file_list(pwd)
-
+    source_file = f"{pwd}/test.txt"
+    destination_file = f"{pwd}/file.txt"
+    copy_file(source_file, destination_file)
+    file_list(pwd)
 
 if __name__ == "__main__":
     main()
