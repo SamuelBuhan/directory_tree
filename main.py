@@ -16,6 +16,15 @@ def file_exist(path, filename):
             return True
     return False
 
+def create_file(path, filename, text):
+    exist = file_exist(path, filename)
+    if not(exist):
+        file_path = f"{path}/{filename}"
+        file = open(file_path, "w")
+        file.write(text)
+        file.close()
+    return True
+
 def main():
     pwd = os.getcwd()
     file_list(pwd)
@@ -23,7 +32,9 @@ def main():
     print(f"is hello.py already exists:{exist}")
     file_exist(pwd, "main.py")
     print(f"is main.py already exists:{exist}")
-
+    text = "hello, this is the first line for my text"
+    create_file(pwd, "test.txt", text)
+    file_list(pwd)
 
 
 if __name__ == "__main__":
